@@ -19,7 +19,7 @@ function SnakeGame() {
 
     useEffect(() => {
         directionRef.current = direction
-    })
+    },[direction])
 
     useEffect(() => {
         checkIfOutOfBorders();
@@ -39,16 +39,16 @@ function SnakeGame() {
         e = e || window.event;
         switch (e.key) {
             case 'ArrowLeft':
-                setDirection('LEFT');
+                direction !== 'RIGHT' ? setDirection('LEFT') : setDirection('RIGHT');
                 break;
             case 'ArrowUp':
-                setDirection('UP');
+                direction !== 'DOWN' ? setDirection('UP') : setDirection('DOWN');
                 break;
             case 'ArrowRight':
-                setDirection('RIGHT');
+                direction !== 'LEFT' ? setDirection('RIGHT') : setDirection('LEFT');
                 break;
             case 'ArrowDown':
-                setDirection('DOWN');
+                direction !== 'UP' ? setDirection('DOWN') : setDirection('UP');
                 break;
         }
     }
