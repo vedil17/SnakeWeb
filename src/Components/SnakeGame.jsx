@@ -4,7 +4,7 @@ import Food from './Food';
 import Snake from './Snake';
 
 
-function SnakeGame() {
+function SnakeGame({setScore}) {
     const [snakeDots, setSnakeDots] = useState([[0, 0], [2, 0], [4, 0]]);
     const [food, setFood] = useState([0, 0]);
     const [direction, setDirection] = useState('RIGHT');
@@ -111,6 +111,7 @@ function SnakeGame() {
             setFood(getRandomCoordinates());
             enlargeSnake();
             increaseSpeed();
+            setScore((prevScore) => {return prevScore + 10})
         }
     }
 
